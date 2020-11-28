@@ -98,3 +98,4 @@ rfc_accuracy_real = accuracy_score(real_y_test, rfc_real.predict(real_x_test))  
 
 lrm = LogisticRegression(max_iter=1000).fit(synthetic_x, synthetic_y)
 lrm_accuracy = accuracy_score(real_y, lrm.predict(real_x))
+# NOTE: STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
