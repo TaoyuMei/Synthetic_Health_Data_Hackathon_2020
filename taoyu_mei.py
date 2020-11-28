@@ -92,10 +92,23 @@ rfc_accuracy_real = accuracy_score(real_y_test, rfc_real.predict(real_x_test))  
 ### k nearest neighbour classification
 
 # find the best value of k using cross-validation
+k_fold = KFold(n_splits=5)
+# NOTE: to be completed
 
+# use the k-best
+knn = KNeighborsClassifier(n_neighbors=15).fit(synthetic_x, synthetic_y)
+knn_accuracy = accuracy_score(real_y, knn.predict(real_x))  # 52%
+
+# only real data
+knn_real = KNeighborsClassifier(n_neighbors=15).fit(real_x_train, real_y_train)
+knn_accuracy_real = accuracy_score(real_y_test, knn_real.predict(real_x_test))  # 52%
 
 ### logistic regression
 
 lrm = LogisticRegression(max_iter=1000).fit(synthetic_x, synthetic_y)
 lrm_accuracy = accuracy_score(real_y, lrm.predict(real_x))
 # NOTE: STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+# Increase the number of iterations (max_iter) or scale the data as shown in:
+#    https://scikit-learn.org/stable/modules/preprocessing.html
+# Please also refer to the documentation for alternative solver options:
+#    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
